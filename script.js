@@ -22,6 +22,12 @@ document.querySelector('.form').addEventListener('submit', event => {
   }
 });
 
+/**
+ * display error message and turn input element to red
+ * @param  { DOM element } arg1 the element that contain the input & error
+ * @param  { String } arg2 the message that will be displayed
+ * @return { undefined}
+ */
 function displayError(elt, msg = 'This field is required!') {
   // only insert error message if they weren't exist
   if (elt.querySelector('.error-message')) return;
