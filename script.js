@@ -20,20 +20,20 @@ document.querySelector('.form').addEventListener('submit', event => {
   for (let i = 0; i < rows * cols; i++) {
     grid.insertAdjacentHTML('beforeend', `<div class="grid-item"></div>`);
   }
-
-  rowInput.value = '';
-  colInput.value = '';
 });
 
 function displayError(elt, msg = 'This field is required!') {
   // only insert error message if they weren't exist
-  if (elt.nextElementSibling.matches('.error-message')) return;
-  elt.insertAdjacentHTML('afterend', `<p class="error-message">${msg}</p>`);
+  if (elt.querySelector('.error-message')) return;
+  elt.insertAdjacentHTML('beforeend', `<p class="error-message">${msg}</p>`);
+  elt.querySelector('.input').classList.add('input--error');
 
   // if user click on the input again => remove error message
-  elt.querySelector('input').addEventListener('focus', event => {
-    const errorElt = event.target.closest('.input-group').nextElementSibling;
-    if (errorElt.matches('.error-message')) errorElt.remove();
-    // event.target.closest('.input-group').nextElementSibling.remove();
+  elt.querySelector('input').addEventListener('focus', function (event) {
+    const errorElt = event.target.nextElementSibling;
+    if (errorElt) {
+      errorElt.remove();
+    }
+    this.classList.remove('input--error');
   });
 }

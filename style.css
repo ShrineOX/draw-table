@@ -29,6 +29,7 @@ form {
 .input-group {
   margin-block: 6px;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
 }
@@ -36,8 +37,12 @@ form {
 .input {
   padding: 0.2rem 1rem;
   border-radius: 5px;
-  border: 1px solid rgba(78, 78, 78, 2);
+  border: 1px solid transparent;
   width: 70%;
+}
+
+.input--error {
+  border: 1px solid rgb(196, 11, 11);
 }
 
 .draw {
@@ -92,6 +97,9 @@ form {
 }
 
 .error-message {
+  white-space: nowrap;
+  margin-top: 5px;
+  margin-left: 104px;
   color: orangered;
   font-size: 80%;
   font-style: italic;
